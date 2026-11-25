@@ -132,3 +132,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
   background: var(--text); color: var(--bg); padding: 10px 16px; border-radius: 10px; max-width: 90vw; z-index: 50;
 }
 .spinner::after { content: " ⏳"; }
+
+/* Without ANTHROPIC_API_KEY the in-app AI panels are hidden; data arrives via Claude chat sessions instead. */
+body.no-ai .ai-only { display: none !important; }
+body:not(.no-ai) .ai-off { display: none !important; }

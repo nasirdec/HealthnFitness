@@ -14,7 +14,7 @@ run_worker_first = ["/api/*"]
 binding = "DB"
 database_name = "healthnfitness"
 # Replace with the id printed by: npx wrangler d1 create healthnfitness
-database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+database_id = "7d6aaaf1-6304-4241-bb3e-58b965f8eed8"
 migrations_dir = "migrations"
 
 [vars]

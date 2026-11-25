@@ -149,6 +149,7 @@ $("#tabs").addEventListener("click", (e) => {
 });
 
 function start() {
+  fetch("/api/health").then((r) => r.json()).then((h) => document.body.classList.toggle("no-ai", !h.ai)).catch(() => {});
   $("#login").classList.add("hidden");
   $("#app").classList.remove("hidden");
   const h = location.hash.slice(1);
@@ -274,7 +275,8 @@ const VIEWS = {
     const day = await api(`/day/${state.date}`);
     view.innerHTML = `
       <div class="row between"><h2>Food log</h2>${dateBar()}</div>
-      <div class="card stack">
+      <p class="muted ai-off">Tip: share photos or descriptions with Claude in a chat session and they will appear here.</p>
+      <div class="card stack ai-only">
         <h3>Snap or describe what you ate</h3>
         <div id="food-drop"></div>
         <textarea id="food-text" placeholder="e.g. 2 scrambled eggs with butter, 1 slice sourdough toast, black coffee"></textarea>
@@ -308,7 +310,8 @@ const VIEWS = {
     const day = await api(`/day/${state.date}`);
     view.innerHTML = `
       <div class="row between"><h2>Exercise</h2>${dateBar()}</div>
-      <div class="card stack">
+      <p class="muted ai-off">Tip: share photos or descriptions with Claude in a chat session and they will appear here.</p>
+      <div class="card stack ai-only">
         <h3>Screenshot or describe a workout</h3>
         <div id="ex-drop"></div>
         <textarea id="ex-text" placeholder="e.g. 45 min Fitbod upper body: bench 4x8 @ 60 kg, rows 4x10 @ 50 kg… or '30 min brisk walk'"></textarea>
@@ -357,7 +360,8 @@ const VIEWS = {
     const rows = await api(`/body?from=2000-01-01&to=${localDate()}`);
     view.innerHTML = `
       <h2>Weight &amp; body composition</h2>
-      <div class="card stack">
+      <p class="muted ai-off">Tip: share photos or descriptions with Claude in a chat session and they will appear here.</p>
+      <div class="card stack ai-only">
         <h3>Scale photo</h3>
         <div id="scale-drop"></div>
         <button class="primary" id="scale-extract">Read values</button>
@@ -462,7 +466,8 @@ const VIEWS = {
     for (const r of reports) for (const x of r.results) if (x.value != null) (keys[x.test_key] ||= x.test_name);
     view.innerHTML = `
       <h2>Blood tests</h2>
-      <div class="card stack">
+      <p class="muted ai-off">Tip: share photos or descriptions with Claude in a chat session and they will appear here.</p>
+      <div class="card stack ai-only">
         <h3>Upload a lab report</h3>
         <div id="lab-drop"></div>
         <button class="primary" id="lab-extract">Extract results</button>
