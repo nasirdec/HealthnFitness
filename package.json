@@ -1,0 +1,33 @@
+{
+  "name": "healthnfitness",
+  "version": "1.0.0",
+  "description": "Personal health & fitness tracker on Cloudflare Workers + D1 + Claude",
+  "scripts": {
+    "dev": "wrangler dev",
+    "db:migrate:local": "wrangler d1 migrations apply healthnfitness --local",
+    "db:migrate": "wrangler d1 migrations apply healthnfitness --remote",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nasirdec/HealthnFitness.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/nasirdec/HealthnFitness/issues"
+  },
+  "homepage": "https://github.com/nasirdec/HealthnFitness#readme",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.14.0",
+    "hono": "^4.13.22",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261125.1",
+    "typescript": "^7.0.2",
+    "wrangler": "^4.168.0"
+  },
+  "private": true
+}
